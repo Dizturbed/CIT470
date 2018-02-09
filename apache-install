@@ -1,0 +1,26 @@
+#!/bin/bash
+echo "We are about to download apache 2.2.0"
+wget https://archive.apache.org/dist/httpd/httpd-2.2.0.tar.gz
+wget https://archive.apache.org/dist/httpd/httpd-2.2.0.tar.gz.md5
+
+#This verify the downloaded apache source code file is genuine
+
+md5sum  -c  httpd-2.2.0.tar.gz.md5
+
+#this unzip the tar file
+
+tar xvf httpd-2.2.0.tar.gz 
+
+#will chnage directory of the unzip file
+
+cd httpd-2.2.0
+
+# compile, build, install Apache 
+
+./configure -prefix=/usr/local/apache
+ 
+make
+ 
+make install
+
+/usr/local/apache/bin/apachectl start
